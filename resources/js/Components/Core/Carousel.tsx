@@ -6,7 +6,7 @@ const Carousel = ({ images }: { images: Image[] }) => {
 
     useEffect(() => {
         setSelecteImage(images[0]);
-    }, images);
+    }, [images]);
 
     return (
         <>
