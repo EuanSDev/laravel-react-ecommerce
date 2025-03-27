@@ -181,11 +181,9 @@ class CartService
     {
         $userId = Auth::id();
 
-        $optionIdsJson = json_encode(array_values($optionIds));
-
         $cartItem = CartItem::where('user_id', $userId)
             ->where('product_id', $productId)
-            ->where('variation_type_option_ids', $optionIdsJson)
+            ->where('variation_type_option_ids', $optionIds)
             ->first();
 
         if ($cartItem) {
@@ -198,7 +196,7 @@ class CartService
                 'product_id' => $productId,
                 'quantity' => $quantity,
                 'price' => $price,
-                'variation_type_option_ids' => $optionIdsJson,
+                'variation_type_option_ids' => $optionIds,
             ]);
         }
     }
